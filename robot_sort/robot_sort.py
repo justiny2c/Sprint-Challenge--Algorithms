@@ -98,9 +98,17 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+        # [0 , 2, 4, 3 , 1] => [ 0, 2, 4, 5, 6] => []
+
+
+
         # Fill this out
         while self.light_is_on() == False:
             self.set_light_on()
+            
+            while self.can_move_left(): # setting the starting position at 0 every time
+                self.move_left()
+
             for _ in range(len(self._list) - 1):
                 self.swap_item()
                 self.move_right()
@@ -109,14 +117,13 @@ class SortingRobot:
                     self.move_left()
                     self.swap_item() # held item (is smaller now), puts into empty position
                     self.move_right() # go to next position
-                    self.set_light_off() # set light off, and go back to line 102,
+                    self.set_light_off() # set light off, and start the while loop over
                 else:
-                    self.move_left() # if held item is smaller, move left
+                    self.move_left() # if held item is smaller, move left // CHECK to see if numbers are in order
                     self.swap_item() # puts back the the held item back down in empty position
-                    self.move_right() # then start at next position, right
+                    self.move_right() # then start at next position, right => For loop continues
 
-            while self.can_move_left(): # setting the starting position back to 0, while loop at 102 starts again 
-                self.move_left()
+            
 
         return self._list
 
