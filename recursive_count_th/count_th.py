@@ -12,21 +12,20 @@ Your function must utilize recursion. It cannot contain any loops.
 #     else:
 #         return count
 
-
-i=0
+i = 0
 count = 0
+
+
 def count_th(words):
-  global i
-  global count
+    global i
+    global count
 
+    i = words.find("th", i, len(words)-1) + 1
+    count += 1
+    # need to work on if statement; if th is not at end of string, count will be plus 1
+    if i > 0 and (len(words)-1)-i > 1:
+        count_th(words)
+    return count
 
-  i = words.find("th", i, len(words)-1) + 1
-
-  count += 1
-
-  if i > 0 and (len(words)-1)-i > 1: # need to work on if statement; if th is not at end of string, count will be plus 1
-    count_th(words)
-  return count
-
-string = "abcthxyz"
-print(count_th(string))
+# string = "abcthxyz"
+# print(count_th(string))
