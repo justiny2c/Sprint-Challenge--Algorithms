@@ -2,13 +2,14 @@
 
 ## Exercise I
 
-a)
+a) 0(n) - running once, and producing a basic math output
 
 
-b)
+b) 0(n) - one For loop, runs once n times.  
+    <!-- Possibly 0(n * logn) -->
 
 
-c)
+c) 0(n^2) - recursion
 
 ## Exercise II
 
