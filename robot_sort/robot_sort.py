@@ -104,20 +104,20 @@ class SortingRobot:
             for _ in range(len(self._list) - 1):
                 self.swap_item()
                 self.move_right()
-                if self.compare_item() == 1:
+                if self.compare_item() == 1: # if held item bigger, swap and move left
                     self.swap_item()
                     self.move_left()
-                    self.swap_item()
-                    self.move_right()
-                    self.set_light_off()
+                    self.swap_item() # held item (is smaller now), puts into empty position
+                    self.move_right() # go to next position
+                    self.set_light_off() # set light off, and go back to line 102,
                 else:
-                    self.move_left()
-                    self.swap_item()
-                    self.move_right()
+                    self.move_left() # if held item is smaller, move left
+                    self.swap_item() # puts back the the held item back down in empty position
+                    self.move_right() # then start at next position, right
 
-            while self.can_move_left():
+            while self.can_move_left(): # setting the starting position back to 0, while loop at 102 starts again 
                 self.move_left()
-                
+
         return self._list
 
 
